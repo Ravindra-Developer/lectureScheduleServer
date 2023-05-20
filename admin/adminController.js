@@ -182,7 +182,7 @@ adminController.ScheduleLecture = async (req, res) => {
     try {
         const lectureExist = await scheduledLecSchema.findOne({ lectureDate: lectureDate })
         if (lectureExist) {
-            return res.status(500).json({ msg: "Instructor has been already assigned to a lecture on specific date", success: false })
+            return res.status(500).json({ msg: "Lecture has been already scheduled on the given date", success: false })
         } else {
             let Teacher = await Instructor.findOne({ user_id: InstructorId })
             let courseData = await course.findOne({ course_id: course_id }, { courseName: 1 })
