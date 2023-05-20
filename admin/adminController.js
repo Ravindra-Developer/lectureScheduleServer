@@ -117,7 +117,7 @@ adminController.addCourse = async (req, res) => {
         return res.status(422).json({ error: "Please fill all the details." })
     }
     try {
-        const courseExist = await course.findOne({ courseName: courseName })
+        const courseExist = await course.findOne({ courseName: courseName, level: level })
         if (courseExist) {
             return res.status(422).json({ error: "Course Already Exist", success: false })
         } else {
